@@ -1,6 +1,9 @@
 package com.master2016;
 
-
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -23,11 +26,41 @@ public class KafkaTwitterProducer {
 
 	}
 
-	
-	public void fromFile(){
-		
+	public void fromFile() throws IOException, InterruptedException {
+		Properties properties = new Properties();
+		properties.put("metadata.broker.list", Keys.brokerUrl);
+		properties.put("serializer.class", "kafka.serializer.StringEncoder");
+		properties.put("client.id", "productorAGB");
+		ProducerConfig producerConfig = new ProducerConfig(properties);
+		kafka.javaapi.producer.Producer<String, String> producer = new kafka.javaapi.producer.Producer<String, String>(
+				producerConfig);
+
+		File archivo = new File(Keys.fileName);
+
+		archivo = new File("C:\\archivo.txt");
+		FileReader fr = new FileReader(archivo);
+		BufferedReader br = new BufferedReader(fr);
+		String linea;
+
+		try {
+			while ((linea = br.readLine()) != null) {
+				System.out.println(linea);
+
+				KeyedMessage<String, String> message = null;
+				message = new KeyedMessage<String, String>("incoming", linea);
+				producer.send(message);
+
+			}
+		} catch (Exception ex) {
+			throw ex;
+		} finally {
+			br.close();
+			fr.close();
+			producer.close();
+		}
+
 	}
-	
+
 	public void fromTwitter() throws InterruptedException {
 
 		Properties properties = new Properties();
