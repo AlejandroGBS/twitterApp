@@ -1,11 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>twitterApp</groupId>
-  <artifactId>twitterApp</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>twitterApp</name>
-  
-  	<properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>twitterApp</groupId>
+	<artifactId>twitterApp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>twitterApp</name>
+
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven.compiler.source>1.7</maven.compiler.source>
@@ -42,14 +43,14 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.kafka</groupId>
-			<artifactId>kafka_2.10</artifactId>
-			<version>0.8.2.1</version>
-<!-- 			<exclusions> -->
-<!-- 				<exclusion> -->
-<!-- 					<groupId>org.slf4j</groupId> -->
-<!-- 					<artifactId>slf4j-log4j12</artifactId> -->
-<!-- 				</exclusion> -->
-<!-- 			</exclusions> -->
+			<artifactId>kafka_2.11</artifactId>
+			<version>0.10.1.0</version>
+			<!-- <exclusions> -->
+			<!-- <exclusion> -->
+			<!-- <groupId>org.slf4j</groupId> -->
+			<!-- <artifactId>slf4j-log4j12</artifactId> -->
+			<!-- </exclusion> -->
+			<!-- </exclusions> -->
 		</dependency>
 		<dependency>
 			<groupId>org.apache.curator</groupId>
@@ -75,7 +76,7 @@
 				<configuration>
 					<programs>
 						<program>
-							<mainClass>com.agb.master.storm.Topology</mainClass>
+							<mainClass>com.master2016.KafkaStart</mainClass>
 							<name>startTwitterApp</name>
 						</program>
 					</programs>
